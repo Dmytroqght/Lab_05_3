@@ -1,7 +1,8 @@
-﻿// Lab_05_3.cpp 
+﻿// Lab_05_3.cpp
 
-#include <iostream> 
-#include <cmath> 
+#include <iostream>
+#include <iomanip>
+#include <cmath>
 
 using namespace std;
 
@@ -20,13 +21,24 @@ int main()
 
     double g = gp;
 
+    // Виведення заголовка таблиці
+    cout << fixed;
+    cout << "----------------------------------------" << endl;
+    cout << "|     g       |          z             |" << endl;
+    cout << "----------------------------------------" << endl;
 
     while (g <= gk)
     {
         z = f(2 * g) + pow(f((g * g + 1)), 2);
-        cout << g << "  " << z << endl;
+
+        cout << "| " << setw(10) << setprecision(4) << g
+            << " | " << setw(18) << setprecision(6) << z
+            << " |" << endl;
+
         g += dg;
     }
+
+    cout << "----------------------------------------" << endl;
 
     return 0;
 }
@@ -39,17 +51,14 @@ double f(const double x)
     {
         double S = 0;
         int j = 0;
-        //double a=1;
         double R = 4;
         S = R;
         do
         {
             j++;
             R = (pow(x, 4)) / ((2 * j + 1) * 2 * j);
-            //a *= R;
             S += R;
         } while (j < 7);
         return S;
     }
 }
-
